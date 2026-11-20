@@ -1,0 +1,22 @@
+function send() {
+let input = document.getElementById("msg");
+let chat = document.getElementById("chat");
+let q = input.value.trim();
+if (!q) return;
+chat.innerHTML += "<p><b>Adiga:</b> "+q+"</p>";
+let answer = "Waan ku salaamay! Anigu waxaan ahay ABUKAR AI. Sideen kuu caawin karaa?";
+chat.innerHTML += "<p><b>ABUKAR AI:</b> "+answer+"</p>";
+input.value = "";
+}
+function speak() {
+let text = document.getElementById("chat").innerText;
+let speech = new SpeechSynthesisUtterance(text);
+speech.lang = "so-SO";
+speechSynthesis.speak(speech);
+}
+</script>
+</body>
+</html>
+Waa hagaag! 👍 Hadda waxaad joogtaa meesha lagu qorayo koodhka ABUKAR AI.
+Meesha madow taabo, kadib ku dheji koodhkan oo dhan:
+HTML
