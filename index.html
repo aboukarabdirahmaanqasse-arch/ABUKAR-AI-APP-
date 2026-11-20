@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="so">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ABUKAR AI</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial;
+    background: #eaf3ff;
+    text-align: center;
+}
+header {
+    background: #0756c9;
+    color: white;
+    padding: 25px;
+}
+h1 { margin: 5px; }
+.container {
+    padding: 20px;
+}
+#chat {
+    background: white;
+    border-radius: 12px;
+    padding: 15px;
+    min-height: 250px;
+    text-align: left;
+    margin-bottom: 15px;
+}
+input, select {
+    padding: 14px;
+    width: 85%;
+    border: 1px solid #0756c9;
+    border-radius: 10px;
+    margin: 7px;
+}
+button {
+    background: #0756c9;
+    color: white;
+    border: none;
+    padding: 13px 25px;
+    border-radius: 10px;
+    margin: 5px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>ABUKAR AI</h1>
+<p>Kaaliyahaaga caqliga macmalka ah</p>
+</header>
+
+<div class="container">
+
+<div id="chat">
+<p><b>ABUKAR AI:</b> Salaam! Soo dhawoow. Maxaan kaa caawin karaa?</p>
+</div>
+
+<input id="message" placeholder="Halkan ku qor su'aashaada">
+
+<br>
+
+<button onclick="send()">DIR</button>
+
+<br>
+
+<select id="voice">
+<option value="male">Codka Wiilka</option>
+<option value="female">Codka Gabadha</option>
+</select>
+
+<button onclick="speak()">DHAGEYSO</button>
+
+</div>
+
+<script>
+
+let lastAnswer = "";
+
+function send() {
+let msg = document.getElementById("message").value;
+let chat = document.getElementById("chat");
+
+if(msg.trim() === "") return;
+
+let answer = "Waan ku salaamay! Waxaan ahay ABUKAR AI. Weli waxaan ahay nooca tijaabada ah.";
+
+chat.innerHTML += "<p><b>Adiga:</b> " + msg + "</p>";
+chat.innerHTML += "<p><b>ABUKAR AI:</b> " + answer + "</p>";
+
+lastAnswer = answer;
+
+document.getElementById("message").value = "";
+}
+
+function speak() {
+let speech = new SpeechSynthesisUtterance(lastAnswer);
+speech.lang = "so-SO";
+
+let voices = speechSynthesis.getVoices();
+
+if(document.getElementById("voice").value === "female") {
+speech.pitch = 1.4;
+} else {
+speech.pitch = 0.8;
+}
+
+speech.rate = 0.9;
+speechSynthesis.speak(speech);
+}
+
+</script>
+
+</body>
+</html>
